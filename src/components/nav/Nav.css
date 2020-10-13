@@ -1,0 +1,27 @@
+.navigation {
+    margin-top: 0;
+    height: 66px;
+    background-color: #52B6FF;
+    display: flex;
+}
+
+.nav_list {
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.nav_element {
+    margin: 10px 20px;    
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.title {
+    font-size: 32px;
+    color: white;
+}
