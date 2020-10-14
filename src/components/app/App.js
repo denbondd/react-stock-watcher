@@ -9,7 +9,7 @@ import Login from '../login/Login'
 function App() {
   return (
     <Router>
-      <Nav/>
+      <Nav />
       <Switch>
         <Route path='/observed' component={Observed} />
         <Route path='/login' component={Login} />
