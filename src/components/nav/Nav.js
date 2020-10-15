@@ -9,7 +9,7 @@ import observed_selected from '../../images/observed_selected.svg'
 function Nav() {
     return (
         <nav className='navigation'>
-            <div className='container'>
+            <div className='container nav_content'>
                 <ul className='nav_list'>
                     <li className='nav_element'>
                         <Link to='/'>
