@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
 import search from '../../images/search_icon.svg'
+import Graph from '../graph/Graph'
 
 function Home() {
     return (
@@ -15,7 +16,8 @@ function Home() {
                 </div>
             </div>
             <div className='graphs'>
-                
+                <Graph />
+                <div className='graph'></div>
             </div>
         </div>
     )
