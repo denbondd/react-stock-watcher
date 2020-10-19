@@ -43,3 +43,10 @@
 .search_icon {
     width: 18px;
 }
+
+.graphs {
+    margin: auto;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}

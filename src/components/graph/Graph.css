@@ -1,0 +1,36 @@
+.three-line-legend {
+    position: absolute;
+    z-index: 1;
+}
+
+.graph-container {
+    background: white;
+    border-radius: 36px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.graph {
+    margin: 10px 10px 0 10px;
+}
+
+.addToObserved {
+    width: max-content;
+    margin: 0 0 0 auto;
+}
+
+.addToObserved button {
+    height: 40px;
+    margin: 0 20px;
+    border: 0;
+    background: none;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+}
+
+.addToObserved-text {
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}

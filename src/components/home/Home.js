@@ -17,7 +17,11 @@ function Home() {
             </div>
             <div className='graphs'>
                 <Graph />
-                <div className='graph'></div>
+                <Graph />
+                <Graph />
+                <Graph />
+                <Graph />
+                <Graph />
             </div>
         </div>
     )

@@ -1,7 +1,12 @@
+:root {
+    --gray: #666666;
+}
+
 body {
     background: #EBF1F8;
 }
 
 .container {
     max-width: 1400px;
+    margin: auto;
 }
