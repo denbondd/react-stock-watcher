@@ -16,12 +16,12 @@ function Home() {
                 </div>
             </div>
             <div className='graphs'>
-                <Graph />
-                <Graph />
-                <Graph />
-                <Graph />
-                <Graph />
-                <Graph />
+                <Graph symbol='GOOGL' />
+                <Graph symbol='AAPL' />
+                <Graph symbol='FB' />
+                <Graph symbol='NFLX' />
+                <Graph symbol='AMZN' />
+                <Graph symbol='TSLA' />
             </div>
         </div>
     )
