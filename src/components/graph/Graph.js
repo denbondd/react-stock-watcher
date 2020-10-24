@@ -7,8 +7,8 @@ import { getData } from '../../api/stockCandles'
 function Graph(props) {
 	const myRef = React.useRef();
 	React.useEffect(() => {
-		getData(props.symbol, makeChart, myRef)
-	}, []);
+		getData(props.symbol, 9, makeChart, myRef);
+	});
 
 	return (
 		<div className='graph-container'>
@@ -55,7 +55,8 @@ function makeChart(title, data, myRef) {
 
 	function setLastBarText() {
 		let dateStr = data[data.length - 1].time.year + ' - ' + data[data.length - 1].time.month + ' - ' + data[data.length - 1].time.day;
-		toolTip.innerHTML = `<div style="font-size: 24px; margin: 4px 0px; color: #20262E"> ${title}</div>` + '<div style="font-size: 22px; margin: 4px 0px; color: #20262E">' + data[data.length - 1].value + '</div>' +
+		toolTip.innerHTML = `<div style="font-size: 24px; margin: 4px 0px; color: #20262E"> ${title}</div>` +
+			'<div style="font-size: 22px; margin: 4px 0px; color: #20262E">' + data[data.length - 1].value + '</div>' +
 			'<div>' + dateStr + '</div>';
 	}
 
@@ -67,9 +68,11 @@ function makeChart(title, data, myRef) {
 		} else {
 			let dateStr = param.time.year + ' - ' + param.time.month + ' - ' + param.time.day;
 			let price = param.seriesPrices.get(series);
-			toolTip.innerHTML = `<div style="font-size: 24px; margin: 4px 0px; color: #20262E"> ${title}</div>` + '<div style="font-size: 22px; margin: 4px 0px; color: #20262E">' + (Math.round(price * 100) / 100).toFixed(2) + '</div>' + '<div>' + dateStr + '</div>';
+			toolTip.innerHTML = `<div style="font-size: 24px; margin: 4px 0px; color: #20262E"> ${title}</div>` +
+				'<div style="font-size: 22px; margin: 4px 0px; color: #20262E">' + (Math.round(price * 100) / 100).toFixed(2) +
+				'</div>' + '<div>' + dateStr + '</div>';
 		}
 	});
 }
 
-export default Graph
+export default Graph;
