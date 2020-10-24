@@ -13,6 +13,7 @@ function Graph(props) {
 	return (
 		<div className='graph-container'>
 			<div ref={myRef} className='graph' />
+			<button onClick={props.changeState}>More Info</button>
 			<div className='addToObserved'>
 				<button>
 					<p className='addToObserved-text'>Add to observed</p>

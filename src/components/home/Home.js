@@ -3,7 +3,7 @@ import './Home.css'
 import search from '../../images/search_icon.svg'
 import Graph from '../graph/Graph'
 
-function Home() {
+function Home(props) {
     return (
         <div className='container'>
             <div className='first_section'>
@@ -16,7 +16,7 @@ function Home() {
                 </div>
             </div>
             <div className='graphs'>
-                <Graph symbol='GOOGL' />
+                <Graph symbol='GOOGL' changeState={props.changeState} />
                 <Graph symbol='AAPL' />
                 <Graph symbol='FB' />
                 <Graph symbol='NFLX' />

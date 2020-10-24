@@ -6,17 +6,33 @@ import Home from '../home/Home';
 import Observed from '../observed/Observed'
 import Login from '../login/Login'
 
-function App() {
-  return (
-    <Router>
-      <Nav />
-      <Switch>
-        <Route path='/observed' component={Observed} />
-        <Route path='/login' component={Login} />
-        <Route path='/' component={Home} />
-      </Switch>
-    </Router>
-  );
-}
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showMoreInfo: false
+    };
+  }
 
-export default App;
+  changeState = () => {
+    this.setState({
+      showMoreInfo: !this.state.showMoreInfo
+    });
+  }
+
+  render() {
+    return (
+      <Router>
+        <Nav />
+        <Switch>
+          <Route path='/observed' component={Observed} />
+          <Route path='/login' component={Login} />
+          <Route path='/'>
+            {this.state.showMoreInfo && <Nav />}
+            <Home changeState={this.changeState} />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
+}
