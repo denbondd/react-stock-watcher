@@ -7,13 +7,13 @@ import { getData } from '../../api/stockCandles'
 function Graph(props) {
 	const myRef = React.useRef();
 	React.useEffect(() => {
-		getData(props.symbol, 9, makeChart, myRef);
+		getData(props.id, props.symbol, 9, makeChart, myRef);
 	});
 
 	return (
 		<div className='graph-container'>
 			<div ref={myRef} className='graph' />
-			<button onClick={props.changeState}>More Info</button>
+			<button onClick={props.changeShowMoreInfoState}>More Info</button>
 			<div className='addToObserved'>
 				<button>
 					<p className='addToObserved-text'>Add to observed</p>
@@ -23,21 +23,28 @@ function Graph(props) {
 				</button>
 			</div>
 		</div>
-	)
+	);
 }
 
-function makeChart(title, data, myRef) {
+let listOfCharts = new Map();
+function makeChart(id, title, data, myRef) {
 	let width = 550;
 	let height = 300;
-	let chart = window.tvchart = createChart(myRef.current, {
-		width: width,
-		height: height,
-		grid: {
-			horzLines: {
-				visible: false,
+	let chart = listOfCharts.get(id);
+	if (chart === undefined) {
+		chart = window.tvchart = createChart(myRef.current, {
+			width: width,
+			height: height,
+			grid: {
+				horzLines: {
+					visible: false,
+				},
 			},
-		},
-	});
+		});
+	} else {
+		return;
+	}
+	listOfCharts.set(id, chart)
 
 	let series = chart.addAreaSeries({
 		topColor: 'rgba(19, 68, 193, 0.4)',
@@ -45,6 +52,7 @@ function makeChart(title, data, myRef) {
 		lineColor: 'rgba(19, 40, 153, 1.0)',
 		lineWidth: 3
 	});
+	
 	series.setData(data);
 
 	let toolTip = document.createElement('div');

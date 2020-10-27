@@ -51,3 +51,8 @@
     flex-flow: wrap;
     justify-content: space-evenly;
 }
+
+.more_info {
+    position: absolute;
+    z-index: 3;
+}

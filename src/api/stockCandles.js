@@ -1,6 +1,6 @@
 const request = require('request');
 
-function getData(symbol, months, onFinish, myRef) {
+function getData(id, symbol, months, onFinish, myRef) {
     let data = [{ time: '2020-10-14', value: 140 }];
     let to = new Date();
     let from = new Date();
@@ -23,7 +23,7 @@ function getData(symbol, months, onFinish, myRef) {
                 data.push({ time: getFormattedDate(date), value: element });
             });
             data.shift();
-            onFinish(symbol, data, myRef);
+            onFinish(id, symbol, data, myRef);
         });
 }
 
