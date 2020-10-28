@@ -15,14 +15,8 @@
     position: relative;
 }
 
-.addToObserved {
-    width: max-content;
-    margin: 0 0 0 auto;
-}
-
 .addToObserved button {
     height: 40px;
-    margin: 0 20px;
     border: 0;
     background: none;
     color: var(--gray);
@@ -34,4 +28,20 @@
     margin-right: 8px;
     font-size: 14px;
     font-weight: 600;
+}
+
+.bottomSection {
+    display: flex;
+    margin: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showMoreInfo {
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 8px;
+    color: var(--gray);
+    text-decoration: underline;
+    cursor: pointer;
 }

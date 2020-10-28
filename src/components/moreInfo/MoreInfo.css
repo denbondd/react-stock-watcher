@@ -1,5 +1,9 @@
 .background {
     background: #0000007a;
-    width: 99vw;
+    width: 100vw;
     height: 100vh;
+}
+
+.content {
+    background: var(--background);
 }

@@ -16,13 +16,14 @@ export default class Home extends React.Component {
         this.setState({
             showMoreInfo: !this.state.showMoreInfo
         });
+        document.body.style.overflow = this.state.showMoreInfo ? 'unset' : 'hidden';
     }
 
     render() {
         return (
             <div className='container'>
                 <div className='more_info'>
-                    {this.state.showMoreInfo && <MoreInfo />}
+                    {this.state.showMoreInfo && <MoreInfo changeShowMoreInfoState={this.changeShowMoreInfoState} />}
                 </div>
                 <div className='first_section'>
                     <p className='recom_title'>Recommended</p>

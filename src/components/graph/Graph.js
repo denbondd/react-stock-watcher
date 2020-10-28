@@ -4,46 +4,45 @@ import { createChart } from 'lightweight-charts'
 import addToObserved from '../../images/addToObserved.svg'
 import { getData } from '../../api/stockCandles'
 
+let listOfCharts = new Map();
 function Graph(props) {
 	const myRef = React.useRef();
 	React.useEffect(() => {
-		getData(props.id, props.symbol, 9, makeChart, myRef);
+		if (listOfCharts.get(props.id) === undefined) {
+			getData(props.id, props.symbol, 9, makeChart, myRef);
+		}
 	});
 
 	return (
 		<div className='graph-container'>
 			<div ref={myRef} className='graph' />
-			<button onClick={props.changeShowMoreInfoState}>More Info</button>
-			<div className='addToObserved'>
-				<button>
-					<p className='addToObserved-text'>Add to observed</p>
-					<img className='addToObserved-icon'
-						alt='observed_icon'
-						src={addToObserved} />
-				</button>
+			<div className='bottomSection'>
+				<p className='showMoreInfo' onClick={props.changeShowMoreInfoState}>More Info</p>
+				<div className='addToObserved'>
+					<button>
+						<p className='addToObserved-text'>Add to observed</p>
+						<img className='addToObserved-icon'
+							alt='observed_icon'
+							src={addToObserved} />
+					</button>
+				</div>
 			</div>
 		</div>
 	);
 }
 
-let listOfCharts = new Map();
 function makeChart(id, title, data, myRef) {
 	let width = 550;
 	let height = 300;
-	let chart = listOfCharts.get(id);
-	if (chart === undefined) {
-		chart = window.tvchart = createChart(myRef.current, {
-			width: width,
-			height: height,
-			grid: {
-				horzLines: {
-					visible: false,
-				},
+	let chart = window.tvchart = createChart(myRef.current, {
+		width: width,
+		height: height,
+		grid: {
+			horzLines: {
+				visible: false,
 			},
-		});
-	} else {
-		return;
-	}
+		},
+	});
 	listOfCharts.set(id, chart)
 
 	let series = chart.addAreaSeries({
@@ -52,7 +51,7 @@ function makeChart(id, title, data, myRef) {
 		lineColor: 'rgba(19, 40, 153, 1.0)',
 		lineWidth: 3
 	});
-	
+
 	series.setData(data);
 
 	let toolTip = document.createElement('div');

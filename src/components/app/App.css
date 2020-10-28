@@ -1,12 +1,17 @@
 :root {
     --gray: #666666;
+    --background: #EBF1F8
 }
 
 body {
-    background: #EBF1F8;
+    background: var(--background);
 }
 
 .container {
     max-width: 1400px;
     margin: auto;
+}
+
+button {
+    cursor: pointer;
 }

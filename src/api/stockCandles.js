@@ -5,26 +5,30 @@ function getData(id, symbol, months, onFinish, myRef) {
     let to = new Date();
     let from = new Date();
     from.setMonth(from.getMonth() - months);
-    request(`https://finnhub.io/api/v1/stock/candle` +
-        `?symbol=${symbol}` +
-        `&resolution=D` +
-        `&from=${Math.round(from.getTime() / 1000)}` +
-        `&to=${Math.round(to.getTime() / 1000)}` +
-        `&token=bu1ut0f48v6sao5m3j2g`,
-        { json: true },
-        function (error, response, body) {
-            if (error) {
-                console.log(error);
-                return;
-            }
-            let date = from;
-            body['o'].forEach((element) => {
-                date.setDate(date.getDate() + 1);
-                data.push({ time: getFormattedDate(date), value: element });
+    try {
+        request(`https://finnhub.io/api/v1/stock/candle` +
+            `?symbol=${symbol}` +
+            `&resolution=D` +
+            `&from=${Math.round(from.getTime() / 1000)}` +
+            `&to=${Math.round(to.getTime() / 1000)}` +
+            `&token=bu1ut0f48v6sao5m3j2g`,
+            { json: true },
+            function (error, response, body) {
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+                let date = from;
+                body['o'].forEach((element) => {
+                    date.setDate(date.getDate() + 1);
+                    data.push({ time: getFormattedDate(date), value: element });
+                });
+                data.shift();
+                onFinish(id, symbol, data, myRef);
             });
-            data.shift();
-            onFinish(id, symbol, data, myRef);
-        });
+    } catch(e) {
+        console.error(e);
+    };
 }
 
 function getFormattedDate(date) {

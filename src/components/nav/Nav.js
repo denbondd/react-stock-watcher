@@ -12,24 +12,24 @@ function Nav() {
             <div className='container nav_content'>
                 <ul className='nav_list'>
                     <li className='nav_element'>
-                        <Link to='/'>
+                        <Link className='navLink' to='/'>
                             <img
                                 src={window.location.pathname !== '/' ? home : home_selected}
                                 alt='home.svg' />
                             Home
-                    </Link>
+                        </Link>
                     </li>
                     <li className='nav_element'>
-                        <Link to='/observed'>
+                        <Link className='navLink' to='/observed'>
                             <img
                                 src={window.location.pathname !== '/observed' ? observed : observed_selected}
                                 alt='home.svg' />
                             Observed
-                    </Link>
+                        </Link>
                     </li>
                 </ul>
                 <p className='title'>Stocks Watcher</p>
-                <Link to='/login' className='nav_element'>Log in or Sign up</Link>
+                <Link to='/login' className='nav_element navLink'>Log in or Sign up</Link>
             </div>
         </nav>
     )

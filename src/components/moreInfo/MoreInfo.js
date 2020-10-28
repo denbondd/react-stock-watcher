@@ -1,14 +1,18 @@
 import React from 'react'
 import './MoreInfo.css'
 
-function MoreInfo() {
+function MoreInfo(props) {
     return (
-        <div className='background'>
+        <div className='background' onClick={() => props.changeShowMoreInfoState()}>
             <div className='content'>
-                MoreInfo
+
             </div>
         </div>
     )
+}
+
+function setData() {
+    
 }
 
 export default MoreInfo

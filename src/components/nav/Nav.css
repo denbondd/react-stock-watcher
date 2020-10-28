@@ -26,7 +26,7 @@
     margin: 10px;
 }
 
-a {
+.navLink {
     color: white;
     text-decoration: none;
     display: flex;
