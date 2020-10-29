@@ -2,8 +2,20 @@
     background: #0000007a;
     width: 100vw;
     height: 100vh;
+    padding: 100px 0;
 }
 
 .content {
     background: var(--background);
+    margin: auto;
+    width: max-content;
+    padding: 40px;
+}
+
+.firstRow {
+    display: flex;
+}
+
+.logo {
+    width: auto;
 }

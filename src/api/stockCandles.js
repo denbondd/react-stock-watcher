@@ -1,4 +1,4 @@
-const request = require('request');
+import request from 'request';
 
 function getData(id, symbol, months, onFinish, myRef) {
     let data = [{ time: '2020-10-14', value: 140 }];
