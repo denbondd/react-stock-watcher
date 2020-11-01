@@ -8,7 +8,6 @@ export default class MoreInfo extends React.Component {
         this.state = {
             logo: '',
             code: '',
-            ticker: '',
             name: '',
             site: '',
             country: '',
@@ -34,11 +33,16 @@ export default class MoreInfo extends React.Component {
                                 alt='logo'
                                 src={this.state.logo} />
                             <div className='mainData'>
-                                <p>{this.state.code}</p>
-                                <p>{this.state.name}</p>
-                                <a href={this.state.site}>Site</a>
+                                <p className='code no-marg'>{this.state.code}</p>
+                                <p className='name no-marg'>{this.state.name}</p>
+                                <a href={this.state.site} className='site no-marg'>Site</a>
                             </div>
                         </div>
+                        <p><span className='list-title'>Country:</span> {this.state.country}</p>
+                        <p><span className='list-title'>Currency:</span> {this.state.currency}</p>
+                        <p><span className='list-title'>Exchange:</span> {this.state.exchange}</p>
+                        <p><span className='list-title'>IPO:</span> {this.state.ipo}</p>
+                        <p><span className='list-title'>Phone:</span> +{this.state.phone}</p>
                     </div>
                 </div>
             </div>
@@ -51,6 +55,11 @@ export default class MoreInfo extends React.Component {
             code: data.ticker,
             name: data.name,
             site: data.weburl,
+            country: data.country,
+            currency: data.currency,
+            exchange: data.exchange,
+            ipo: data.ipo,
+            phone: data.phone
         });
     }
 }

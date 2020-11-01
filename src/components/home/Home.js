@@ -8,13 +8,15 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMoreInfo: false
+            showMoreInfo: false,
+            showMIcode: ''
         };
     }
 
-    changeShowMoreInfoState = () => {
+    changeShowMoreInfoState = (code) => {
         this.setState({
-            showMoreInfo: !this.state.showMoreInfo
+            showMoreInfo: !this.state.showMoreInfo,
+            showMIcode: code
         });
         document.body.style.overflow = this.state.showMoreInfo ? 'unset' : 'hidden';
     }
@@ -25,7 +27,7 @@ export default class Home extends React.Component {
                 <div className='more_info'>
                     {this.state.showMoreInfo && <MoreInfo 
                         changeShowMoreInfoState={this.changeShowMoreInfoState} 
-                        code='AAPL' />}
+                        code={this.state.showMIcode} />}
                 </div>
                 <div className='first_section'>
                     <p className='recom_title'>Recommended</p>

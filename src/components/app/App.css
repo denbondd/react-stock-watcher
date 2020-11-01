@@ -15,3 +15,7 @@ body {
 button {
     cursor: pointer;
 }
+
+.mainPage {
+    padding-top: 48px;
+}

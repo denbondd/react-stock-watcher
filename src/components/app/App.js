@@ -11,11 +11,13 @@ export default class App extends React.Component {
         return (
             <Router>
                 <Nav />
-                <Switch>
-                    <Route path='/observed' component={Observed} />
-                    <Route path='/login' component={Login} />
-                    <Route path='/' component={Home} />
-                </Switch>
+                <div className='mainPage'>
+                    <Switch>
+                        <Route path='/observed' component={Observed} />
+                        <Route path='/login' component={Login} />
+                        <Route path='/' component={Home} />
+                    </Switch>
+                </div>
             </Router>
         );
     }

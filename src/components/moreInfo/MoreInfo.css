@@ -9,13 +9,37 @@
     background: var(--background);
     margin: auto;
     width: max-content;
-    padding: 40px;
+    padding: 25px;
+    border-radius: 30px;
 }
 
 .firstRow {
     display: flex;
+    align-items: center;
 }
 
 .logo {
     width: auto;
+}
+
+.code {
+    font-size: 17px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.site {
+    font-size: 18px;
+    color: black;
+}
+
+.no-marg {
+    margin: 4px 0;
+}
+
+.list-title {
+    font-weight: 500;
 }
