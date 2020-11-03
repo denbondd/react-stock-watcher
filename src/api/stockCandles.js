@@ -1,7 +1,6 @@
 import request from 'request';
 
-function getData(id, symbol, months, onFinish, myRef) {
-    let data = [{ time: '2020-10-14', value: 140 }];
+function getData(id, symbol, dataType, months, onFinish, myRef) {
     let to = new Date();
     let from = new Date();
     from.setMonth(from.getMonth() - months);
@@ -18,17 +17,39 @@ function getData(id, symbol, months, onFinish, myRef) {
                     console.log(error);
                     return;
                 }
-                let date = from;
-                body['o'].forEach((element) => {
-                    date.setDate(date.getDate() + 1);
-                    data.push({ time: getFormattedDate(date), value: element });
-                });
-                data.shift();
-                onFinish(id, symbol, data, myRef);
+                onFinish(id, symbol, filterData(body, dataType, from), myRef);
             });
-    } catch(e) {
+    } catch (e) {
         console.error(e);
     };
+}
+
+function filterData(body, dataType, date) {
+    let data = []
+    switch (dataType) {
+        case 'one':
+            body['o'].forEach((element) => {
+                date.setDate(date.getDate() + 1);
+                data.push({ time: getFormattedDate(date), value: element });
+            });
+            break;
+        case 'all':
+            for (let i = 0; i < body['o'].length; i++) {
+                date.setDate(date.getDate() + 1);
+                data.push({
+                    time: getFormattedDate(date),
+                    open: body['o'][i],
+                    high: body['h'][i],
+                    low: body['l'][i],
+                    close: body['c'][i]
+                });
+            };
+            break;
+        default:
+            data.push('Wrong dataType')
+            break;
+    }
+    return data;
 }
 
 function getFormattedDate(date) {

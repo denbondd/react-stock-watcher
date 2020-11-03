@@ -9,7 +9,7 @@ function Graph(props) {
 	const myRef = React.useRef();
 	React.useEffect(() => {
 		if (listOfCharts.get(props.id) === undefined) {
-			getData(props.id, props.symbol, 9, makeChart, myRef);
+			getData(props.id, props.symbol, 'one', 9, makeChart, myRef);
 		}
 	});
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import './MoreInfo.css'
 import { getCompanyProfile } from '../../api/companyProfile'
+import { getData } from '../../api/stockCandles'
 
 export default class MoreInfo extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ export default class MoreInfo extends React.Component {
         if (this.state.code !== this.props.code) {
             getCompanyProfile(this.props.code, this.setData);
         };
+        getData(0, this.props.code, 'all', 6, console.log, null)
         return (
             <div className='background' onClick={() => this.props.changeShowMoreInfoState()}>
                 <div className='content'>
