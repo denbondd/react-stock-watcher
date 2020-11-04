@@ -1,6 +1,6 @@
 import request from 'request';
 
-function getData(id, symbol, dataType, months, onFinish, myRef) {
+function getData(symbol, dataType, months, onFinish) {
     let to = new Date();
     let from = new Date();
     from.setMonth(from.getMonth() - months);
@@ -17,7 +17,7 @@ function getData(id, symbol, dataType, months, onFinish, myRef) {
                     console.log(error);
                     return;
                 }
-                onFinish(id, symbol, filterData(body, dataType, from), myRef);
+                onFinish(filterData(body, dataType, from));
             });
     } catch (e) {
         console.error(e);
