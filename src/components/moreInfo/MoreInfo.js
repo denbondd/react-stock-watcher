@@ -4,8 +4,9 @@ import { getCompanyProfile } from '../../api/companyProfile'
 import { getData } from '../../api/stockCandles'
 import { createChart } from 'lightweight-charts'
 
+let currentChartSeries;
 function MoreInfo(props) {
-    const [info, setState] = React.useState({
+    const [info, setInfo] = React.useState({
         logo: '',
         code: '',
         name: '',
@@ -22,7 +23,9 @@ function MoreInfo(props) {
     };
 
     const myRef = React.useRef();
-    getData(props.code, 'all', 6, drawChart);
+    if (currentChartSeries === undefined) {
+        getData(props.code, 'all', 6, drawChart);
+    };
 
     return (
         <div className='background' onClick={() => props.changeShowMoreInfoState()}>
@@ -44,14 +47,14 @@ function MoreInfo(props) {
                     <p><span className='list-title'>Exchange:</span> {info.exchange}</p>
                     <p><span className='list-title'>IPO:</span> {info.ipo}</p>
                     <p><span className='list-title'>Phone:</span> +{info.phone}</p>
-                    <div ref={myRef} />
                 </div>
+                <div ref={myRef} />
             </div>
         </div>
     )
 
     function setCompanyData(data) {
-        setState({
+        setInfo({
             logo: data.logo,
             code: data.ticker,
             name: data.name,
@@ -65,12 +68,17 @@ function MoreInfo(props) {
     }
 
     function drawChart(data) {
-        let chart = createChart(myRef.current, {
-            width: 500,
-            height: 300
-        });
-        let series = chart.addCandlestickSeries();
-        series.setData(data);
+        try {
+            if (currentChartSeries === undefined) {
+                let chart = createChart(myRef.current, {
+                    width: 500,
+                    height: 300,
+                });
+                let series = chart.addCandlestickSeries();
+                currentChartSeries = series;
+            }
+            currentChartSeries.setData(data);
+        } catch (error) { console.error(error); }
     }
 }
 
