@@ -24,11 +24,9 @@ export default class Home extends React.Component {
     render() {
         return (
             <div className='container'>
-                <div className='more_info'>
-                    {this.state.showMoreInfo && <MoreInfo 
-                        changeShowMoreInfoState={this.changeShowMoreInfoState} 
-                        code={this.state.showMIcode} />}
-                </div>
+                {this.state.showMoreInfo && <MoreInfo
+                    changeShowMoreInfoState={this.changeShowMoreInfoState}
+                    code={this.state.showMIcode} />}
                 <div className='first_section'>
                     <p className='recom_title'>Recommended</p>
                     <div className='search'>

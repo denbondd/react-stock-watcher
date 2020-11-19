@@ -13,7 +13,7 @@ function Graph(props) {
 		}
 	});
 
-	let onClick = () => {
+	let showMoreInfoClick = () => {
 		props.changeShowMoreInfoState(props.symbol);
 	}
 
@@ -21,7 +21,7 @@ function Graph(props) {
 		<div className='graph-container'>
 			<div ref={myRef} className='graph' />
 			<div className='bottomSection'>
-				<p className='showMoreInfo' onClick={onClick}>More Info</p>
+				<p className='showMoreInfo' onClick={showMoreInfoClick}>More Info</p>
 				<div className='addToObserved'>
 					<button>
 						<p className='addToObserved-text'>Add to observed</p>

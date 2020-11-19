@@ -55,4 +55,8 @@
 .more_info {
     position: fixed;
     z-index: 3;
+    background: #0000007a;
+    width: 100vw;
+    height: 100vh;
+    padding: 100px 0;
 }

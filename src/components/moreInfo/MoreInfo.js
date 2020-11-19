@@ -27,9 +27,15 @@ function MoreInfo(props) {
         getData(props.code, 'all', 6, drawChart);
     };
 
+    let close = () => {
+        currentChartSeries = undefined;
+        props.changeShowMoreInfoState();
+    }
+
     return (
-        <div className='background' onClick={() => props.changeShowMoreInfoState()}>
+        <div className='more_info'>
             <div className='content'>
+                <div className='closeMoreInfo-btn' onClick={close} />
                 <div className='leftSide'>
                     <div className='firstRow'>
                         <img
@@ -76,6 +82,7 @@ function MoreInfo(props) {
                 });
                 let series = chart.addCandlestickSeries();
                 currentChartSeries = series;
+                //builds only one time, clean currentChartSeries after moreinfo close
             }
             currentChartSeries.setData(data);
         } catch (error) { console.error(error); }
