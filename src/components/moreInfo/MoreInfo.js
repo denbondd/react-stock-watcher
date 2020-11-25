@@ -82,7 +82,6 @@ function MoreInfo(props) {
                 });
                 let series = chart.addCandlestickSeries();
                 currentChartSeries = series;
-                //builds only one time, clean currentChartSeries after moreinfo close
             }
             currentChartSeries.setData(data);
         } catch (error) { console.error(error); }

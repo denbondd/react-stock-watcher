@@ -41,7 +41,9 @@
     margin: 15px;
     font-size: 36px;
     cursor: pointer;
-    position: absolute;
+    margin: auto 0 0 auto;
+    width: max-content;
+    height: 0;
 }
 
 .closeMoreInfo-btn::after {
