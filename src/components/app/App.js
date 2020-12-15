@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Nav from '../nav/Nav'
 import Home from '../home/Home';
-import Observed from '../observed/Observed'
-import Login from '../login/Login'
+import Search from '../search/Search'
 
 export default class App extends React.Component {
     render() {
@@ -13,8 +12,7 @@ export default class App extends React.Component {
                 <Nav />
                 <div className='mainPage'>
                     <Switch>
-                        <Route path='/observed' component={Observed} />
-                        <Route path='/login' component={Login} />
+                        <Route path='/search' component={Search} />
                         <Route path='/' component={Home} />
                     </Switch>
                 </div>
