@@ -33,3 +33,13 @@
 .search_icon {
     width: 18px;
 }
+
+.first_row {
+    display: flex;
+    align-items: center;
+}
+
+.search_hint {
+    font-size: 14px;
+    color: var(--gray);
+}
