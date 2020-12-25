@@ -20,9 +20,13 @@ export default class Search extends React.Component {
     }
 
     searchEditText;
+    dataDivs;
+    errorDiv;
 
     componentDidMount() {
         this.searchEditText = document.getElementById('searchInp');
+        this.dataDivs = document.getElementById('data');
+        this.errorDiv = document.getElementById('errorMsg');
     }
 
     onSearchButtonClick = () => {
@@ -33,8 +37,11 @@ export default class Search extends React.Component {
         this.cleanState();
         console.log(data);
         if (Object.keys(data).length === 0) {
-            this.setState({ name: `Can't find any company with this NASDAQ` })
+            this.dataDivs.style.display = 'none'
+            this.errorDiv.style.display = 'block'
         } else {
+            this.dataDivs.style.display = 'block'
+            this.errorDiv.style.display = 'none'
             this.setState({
                 logo: data.logo,
                 code: data.ticker,
@@ -61,7 +68,7 @@ export default class Search extends React.Component {
                     </div>
                     <p className='search_hint'>You have to write company's NASDAQ</p>
                 </div>
-                <div className='leftSide'>
+                <div id='data'>
                     <div className='firstRow'>
                         <img
                             className='logo'
@@ -79,6 +86,7 @@ export default class Search extends React.Component {
                     <p><span className='list-title'>IPO:</span> {this.state.ipo}</p>
                     <p><span className='list-title'>Phone:</span> +{this.state.phone}</p>
                 </div>
+                <p id='errorMsg'>Can't find any company with this NASDAQ</p>
             </div>
         )
     }

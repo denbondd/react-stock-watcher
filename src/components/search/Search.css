@@ -43,3 +43,17 @@
     font-size: 14px;
     color: var(--gray);
 }
+
+#data {
+    margin: 50px 100px;
+    display: none;
+    width: max-content;
+}
+
+#errorMsg {
+    font-size: x-large;
+    width: max-content;
+    display: none;
+    margin: auto;
+    margin-top: 50px;
+}
