@@ -1,8 +1,11 @@
 import React from 'react'
 import search from '../../images/search_icon.svg'
 import { getCompanyProfile } from '../../api/companyProfile'
+import { getData } from '../../api/stockCandles'
+import { createChart } from 'lightweight-charts'
 import './Search.css'
 
+   let series;
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -22,11 +25,18 @@ export default class Search extends React.Component {
     searchEditText;
     dataDivs;
     errorDiv;
+    graphDiv;
 
     componentDidMount() {
         this.searchEditText = document.getElementById('searchInp');
         this.dataDivs = document.getElementById('data');
         this.errorDiv = document.getElementById('errorMsg');
+        this.graphDiv = document.getElementById('graph');
+        let chart = createChart(this.graphDiv, {
+            width: 500,
+            height: 300
+        });
+        series = chart.addCandlestickSeries();
     }
 
     onSearchButtonClick = () => {
@@ -35,7 +45,6 @@ export default class Search extends React.Component {
 
     setSearchData = (data) => {
         this.cleanState();
-        console.log(data);
         if (Object.keys(data).length === 0) {
             this.dataDivs.style.display = 'none'
             this.errorDiv.style.display = 'block'
@@ -52,8 +61,15 @@ export default class Search extends React.Component {
                 exchange: data.exchange,
                 ipo: data.ipo,
                 phone: data.phone
-            })
+            });
+            getData(this.state.code, 'all', 6, this.setDataToChart)
         }
+    }
+
+    setDataToChart(data) {
+        try {
+            series.setData(data)
+        } catch (e) { console.error(e) }
     }
 
     render() {
@@ -85,6 +101,7 @@ export default class Search extends React.Component {
                     <p><span className='list-title'>Exchange:</span> {this.state.exchange}</p>
                     <p><span className='list-title'>IPO:</span> {this.state.ipo}</p>
                     <p><span className='list-title'>Phone:</span> +{this.state.phone}</p>
+                    <div id='graph' />
                 </div>
                 <p id='errorMsg'>Can't find any company with this NASDAQ</p>
             </div>

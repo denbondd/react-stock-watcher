@@ -1,5 +1,8 @@
 import request from 'request';
 
+/*
+dataType: all - for open, close, etc prices; one - for only open prices
+*/
 function getData(symbol, dataType, months, onFinish) {
     let to = new Date();
     let from = new Date();
