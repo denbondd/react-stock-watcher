@@ -15,26 +15,8 @@
     position: relative;
 }
 
-.addToObserved button {
-    height: 40px;
-    border: 0;
-    background: none;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-}
-
-.addToObserved-text {
-    margin-right: 8px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
 .bottomSection {
-    display: flex;
     margin: 0 20px;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .showMoreInfo {

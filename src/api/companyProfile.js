@@ -5,7 +5,7 @@ function getCompanyProfile(code, onFinish) {
         `symbol=${code}&token=bu1ut0f48v6sao5m3j2g`, { json: true },
         (error, response, body) => {
             if (error) {
-                console.log(error);
+                console.error(error);
                 return;
             }
             onFinish(body);

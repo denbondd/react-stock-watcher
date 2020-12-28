@@ -1,7 +1,6 @@
 import React from 'react'
 import './Graph.css'
 import { createChart } from 'lightweight-charts'
-import addToObserved from '../../images/addToObserved.svg'
 import { getData } from '../../api/stockCandles'
 
 let listOfCharts = new Map();
@@ -22,14 +21,6 @@ function Graph(props) {
 			<div ref={myRef} className='graph' />
 			<div className='bottomSection'>
 				<p className='showMoreInfo' onClick={showMoreInfoClick}>More Info</p>
-				<div className='addToObserved'>
-					<button>
-						<p className='addToObserved-text'>Add to observed</p>
-						<img className='addToObserved-icon'
-							alt='observed_icon'
-							src={addToObserved} />
-					</button>
-				</div>
 			</div>
 		</div>
 	);

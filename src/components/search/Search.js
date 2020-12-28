@@ -32,6 +32,13 @@ export default class Search extends React.Component {
         this.dataDivs = document.getElementById('data');
         this.errorDiv = document.getElementById('errorMsg');
         this.graphDiv = document.getElementById('graph');
+
+        this.searchEditText.addEventListener('keydown', (e) => {
+            if (e.keyCode === 13) {
+                this.onSearchButtonClick();
+            }
+        })
+
         let chart = createChart(this.graphDiv, {
             width: 500,
             height: 300

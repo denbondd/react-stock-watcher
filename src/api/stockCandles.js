@@ -17,7 +17,7 @@ function getData(symbol, dataType, months, onFinish) {
             { json: true },
             function (error, response, body) {
                 if (error) {
-                    console.log(error);
+                    console.error(error);
                     return;
                 }
                 onFinish(filterData(body, dataType, from));
